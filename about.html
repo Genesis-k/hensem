@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>about</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="about-page">
+  <div class="left-section">
+    <h1>Ratatouille</h1>
+    <p>Ratatouille is a story about a rat who dreams of becoming a chef in a famous restaurant.</p>
+    <p class="hint">Click a date on the calendar for surprise.</p>
+  </div>
+
+  <div class="right-section">
+    <div class="calendar" id="calendar">
+      <div class="calendar-header">
+        <button class="cal-btn" id="prev-month"><</button>
+        <div class="month-year" id="month-year"></div>
+        <button class="cal-btn" id="next-month">></button>
+      </div>
+      <div class="weekdays">
+        <div class="weekday">Sun</div>
+        <div class="weekday">Mon</div>
+        <div class="weekday">Tue</div>
+        <div class="weekday">Wed</div>
+        <div class="weekday">Thu</div>
+        <div class="weekday">Fri</div>
+        <div class="weekday">Sat</div>
+      </div>
+      <div class="days" id="days"></div>
+    </div>
+  </div>
+  <div class="popup" id="popup">
+    <h2>It's your birthday!🥳🎉</h2>
+    <p>Happy birthday! May your day be filled with as much joy as Remy's adventures in the kitchen!</p>
+    <button class="close-btn" id="close-popup">Close</button>
+  </div>
+        <div class="nav-buttons">
+          <button class="btn" id="backbtn" data-target="index.html">Back Page</button>
+          <button class="btn" id="nextbtn" data-target="areyousure.html">Next Page</button>
+        </div>
+      </div>
+  <div id="balloon-container" aria-hidden="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>
