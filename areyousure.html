@@ -6,16 +6,17 @@
     <title>Are You Sure??🌟</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Are You Sure You Want to Proceed?</h1>
-    <p>Please confirm your action.</p>
-    <div id="balloon-container">
+<body class="areyousure">
+    <div class="Popup" id="Popup">
+        <h2>Are you sure you want to proceed?</h2>
+        <div class="face" id="face">😐</div>
+        <div class="buttons">
+            <button class="btn no-btn" id="no-btn" data-target="about.html">No 😢</button>
+            <button class="btn yes-btn" id="yes-btn" data-target="gallery.html">Yes 😊</button>
+        </div>
+        <p class="message" id="message"></p>
     </div>
-    <div class="nav-buttons">
-        <button class="btn" id="backbtn" data-target="about.html">No</button>
-        <button class="btn " id="nextbtn" data-target="gallery.html">Yes</button>
-    </div>
-
+    <div id="balloon-container" aria-hidden="true"></div>
 <script src="script.js"></script>
 </body>
 </html>

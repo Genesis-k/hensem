@@ -6,18 +6,17 @@
     <title>Video</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="video-page">
-        <h1 id="text">A short video to document our journey from when I got to know you to now it's your second birthday!!</h1>
-        <video width="400" height="240" controls>
-            <source src="movie.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+<body class="video-page">
+    <div class="welcome-text" id="welcome-text">
+        <h2>Hey there 👋, enjoy this short video!</h2>
+    </div>
+    <div class="video-container" id="video-container">
+        <video controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser doesn't support the video tag.
         </video>
     </div>
-    </div>
-    <div id="balloon-container">
-</div>
-    <br>
+    <div id="balloon-container"></div>
     <div class="nav-buttons">
         <button class="btn" id="backbtn" data-target="gallery.html">Back Page</button>
         <button class="btn" id="nextbtn" data-target="letter.html">Next Page</button>

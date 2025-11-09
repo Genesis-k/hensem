@@ -84,20 +84,23 @@ function renderCalendar(date) {
     daysContainer.appendChild(dayDiv);
   }
 }
-prevBtn.addEventListener('click', () => {
-  currentDate.setMonth(currentDate.getMonth() - 1);
-  renderCalendar(currentDate);
-});
-
-nextBtn.addEventListener('click', () => {
-  currentDate.setMonth(currentDate.getMonth() + 1);
-  renderCalendar(currentDate);
-});
-
-closeBtn.addEventListener('click', () => {
-  popup.style.display = 'none';
-});
-
+if (prevBtn) {
+  prevBtn.addEventListener('click', () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar(currentDate);
+  });
+}
+if (nextBtn) {
+  nextBtn.addEventListener('click', () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar(currentDate);
+  });
+}
+if (closeBtn) {
+  closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+}
 renderCalendar(currentDate);
 });
 
@@ -110,19 +113,21 @@ const colors = ['#ff4d6d', '#ffb3c1', '#ffc300', '#9bf6ff', '#a0c4ff', '#caffbf'
 //start continuous bubbles
 setInterval(createBubbles, 2000);//every 2 seconds
 
-seal.addEventListener('click', () => {
-  envelope.classList.add('open');
-});
+if (seal) {
+  seal.addEventListener('click', () => {
+    if (envelope) {
+      envelope.classList.add('open');
+    }
+  });
+}
 
-envelope.addEventListener('click', (e) => {
-  if(e.target === envelope || e.target.closest('.envelope')) {
-    envelope.classList.add('open');
-  }
-});
-
-letter.addEventListener('click', () => {
-  envelope.classList.remove('open');
-});
+if (letter) {
+  letter.addEventListener('click', () => {
+    if (envelope) {
+      envelope.classList.remove('open');
+    }
+  });
+}
 
 function createBubbles() {
   const container = document.body;
@@ -139,3 +144,102 @@ function createBubbles() {
     }, 4000);
   }
 }
+
+//are you sure you want to proceed
+const popup = document.getElementById('Popup');
+const face = document.getElementById('face');
+const yesBtn = document.getElementById('yes-btn');
+const noBtn = document.getElementById('no-btn');
+const message = document.getElementById('message');
+
+//show popup load
+window.addEventListener('load', () => {
+  popup.classList.add('show');
+});
+
+//no button: shake and show message (left side)
+noBtn.addEventListener('click', () => {
+  face.textContent = '😢';
+  face.classList.add('shake');
+  setTimeout(() => {
+    face.classList.remove('shake');
+    message.textContent = 'Alright Maybe next time 💖';
+    message.classList.add('show');
+    setTimeout(() => {
+      const target = noBtn.getAttribute('data-target');
+      if (target) window.location.href = target;
+    }, 1000);
+  }, 500);
+});
+
+//yes button
+yesBtn.addEventListener('click', () => {
+  face.textContent = '😊';
+  face.classList.add('smile');
+  setTimeout(() => {
+    face.classList.remove('smile');
+    message.textContent = 'Yeey! I\'m glad you want to proceed! 🎉';
+    message.classList.add('show');
+    setTimeout(() => {
+      const target = yesBtn.getAttribute('data-target');
+      if(target) window.location.href = target;
+    }, 1000);
+  }, 1000);
+});
+
+//video
+const welcomeText = document.getElementById('welcome-text');
+if (welcomeText) {
+  setTimeout(() => {
+    welcomeText.classList.add('show');
+  }, 500);
+}
+const videoContainer = document.getElementById('video-container');
+
+//trigger fade-in on page load
+window.addEventListener('load', () => {
+  welcomeText.classList.add('show');
+  videoContainer.classList.add('show');
+});
+
+//gallery
+const galleryLeft = document.getElementById('gallery-left');
+const galleryRight = document.getElementById('gallery-right');
+const modal = document.getElementById('modal');
+const modalImage = document.getElementById('modal-image');
+const closeBtn = document.getElementById('close-btn');
+
+window.addEventListener('load', () => {
+  galleryLeft.classList.add('show');
+  galleryRight.classList.add('show');
+});
+
+document.querySelectorAll('.gallery-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const imageSrc = item.getAttribute('data-image');
+    modalImage.src = imageSrc;
+    modal.classList.add('show');
+  });
+});
+closeBtn.addEventListener('click', () => {
+  modal.classKist.remove('show');
+});
+
+modal.addEventListener('click', (e) => {
+  if(e.target === modal) {
+    modal.classList.remove('show');
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    modal.classList.remove('show');
+  }
+});
+// final page
+const hisMessage = document.getElementById('his-message');
+const emoji = document.getElementById('emoji');
+
+window.addEventListener('load', () => {
+  hisMessage.classList.add('show');
+});
